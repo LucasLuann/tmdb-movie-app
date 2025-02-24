@@ -6,16 +6,27 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { fetchMovies, fetchPopularMovies } from "@/lib/tmdb";
 
-export function SearchBar({ setMovies }) {
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+}
+
+interface SearchBarProps {
+  setMovies: (movies: Movie[]) => void;
+}
+
+export function SearchBar({ setMovies }: SearchBarProps) {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     if(query === ""){
       fetchPopularMovies().then((data) => setMovies(data.results));
     }
-  }, [query])
+  }, [query, setMovies])
 
-  const handleSearch = (query) => {
+  const handleSearch = (query: string) => {
     fetchMovies(query).then((data) => setMovies(data.results));
   };
 
