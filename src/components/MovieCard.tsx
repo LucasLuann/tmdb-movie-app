@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  CardFooter,
 } from "./ui/card";
 
 interface MovieCardProps {
@@ -18,16 +19,23 @@ interface MovieCardProps {
   rating: number;
 }
 
-export function MovieCard({ title, posterPath, releaseDate, rating }: MovieCardProps) {
+export function MovieCard({
+  title,
+  posterPath,
+  releaseDate,
+  rating,
+}: MovieCardProps) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
   const dataLancamento = new Date(releaseDate).toLocaleDateString("pt-BR");
 
   return (
-    <Card className="w-[300px]">
+    <Card>
       <CardHeader>
-        <div className="flex justify-between items-center">
+        <div>
+          <Badge className="text-sm px-1 text-center">
+            ⭐ {rating.toFixed(1)}{" "}
+          </Badge>
           <CardTitle className="truncate text-lg">{title}</CardTitle>
-          <Badge className="text-sm px-2 ">⭐ {rating.toFixed(1)} </Badge>
         </div>
         <CardDescription>Data de Lançamento: {dataLancamento}</CardDescription>
       </CardHeader>
@@ -36,16 +44,18 @@ export function MovieCard({ title, posterPath, releaseDate, rating }: MovieCardP
           <img
             src={imageUrl}
             alt={title}
-            width={300}
-            height={300}
-            className="rounded-md"
+            className="rounded-md w-full h-full"
+            // width={300}
+            // height={300}
           />
-          <Button className="w-full flex items-center justify-between">
-            <span className="flex-1 text-center">Mais Informações</span>
-            <CirclePlus />
-          </Button>
         </div>
       </CardContent>
+      <CardFooter>
+        <Button className="w-full flex items-center justify-between">
+          <span className="flex-1 text-center">Mais Informações</span>
+          <CirclePlus />
+        </Button>
+      </CardFooter>
     </Card>
   );
 }
