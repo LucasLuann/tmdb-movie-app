@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import { CirclePlus } from "lucide-react";
 import {
   Card,
@@ -14,16 +15,20 @@ interface MovieCardProps {
   title: string;
   posterPath: string;
   releaseDate: string;
+  rating: number;
 }
 
-export function MovieCard({ title, posterPath, releaseDate }: MovieCardProps) {
+export function MovieCard({ title, posterPath, releaseDate, rating }: MovieCardProps) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
   const dataLancamento = new Date(releaseDate).toLocaleDateString("pt-BR");
 
   return (
     <Card className="w-[300px]">
       <CardHeader>
-        <CardTitle className="truncate">{title}</CardTitle>
+        <div className="flex justify-between items-center">
+          <CardTitle className="truncate text-lg">{title}</CardTitle>
+          <Badge className="text-sm px-2 ">⭐ {rating.toFixed(1)} </Badge>
+        </div>
         <CardDescription>Data de Lançamento: {dataLancamento}</CardDescription>
       </CardHeader>
       <CardContent className="text-center">

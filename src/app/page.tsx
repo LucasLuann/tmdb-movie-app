@@ -9,6 +9,7 @@ interface Movie {
   title: string;
   poster_path: string;
   release_date: string;
+  vote_average: number;
 }
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
               title={movie.title}
               posterPath={movie.poster_path}
               releaseDate={movie.release_date}
+              rating={movie.vote_average}
             />
           ))
         ) : (
