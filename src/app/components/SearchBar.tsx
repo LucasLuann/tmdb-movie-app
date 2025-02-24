@@ -11,10 +11,11 @@ interface Movie {
   title: string;
   poster_path: string;
   release_date: string;
+  vote_average: number;
 }
 
 interface SearchBarProps {
-  setMovies: (movies: Movie[]) => void;
+  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
 }
 
 export function SearchBar({ setMovies }: SearchBarProps) {
