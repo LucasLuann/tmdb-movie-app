@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 LucasMovies
 
-## Getting Started
+Bem-vindo ao **LucasMovies**, um projeto desenvolvido com [Next.js](https://nextjs.org) para explorar e visualizar informações sobre filmes.
 
-First, run the development server:
+🔗 **Acesse o projeto online:** [lucasmovies.vercel.app](https://lucasmovies.vercel.app/)
+
+## 🚀 Tecnologias Utilizadas
+
+- **[Next.js](https://nextjs.org)** - Framework React para aplicações web modernas.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Estilização rápida e eficiente.
+- **[TMDb API](https://www.themoviedb.org/documentation/api)** - Fonte de dados para informações sobre filmes e séries (caso esteja sendo usada).
+- **[Vercel](https://vercel.com/)** - Hospedagem e deploy automático.
+
+## 📌 Como Rodar o Projeto Localmente
+
+Clone o repositório e instale as dependências:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone o repositório
+git clone https://github.com/seu-usuario/tmdb-movie-app.git
+
+# Acesse a pasta do projeto
+cd tmdb-movie-app
+
+# Instale as dependências
+npm install  # ou yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📡 Executando o Servidor de Desenvolvimento
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev  # ou yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador para visualizar o projeto em execução.
 
-## Learn More
+## 🛠 Configuração
 
-To learn more about Next.js, take a look at the following resources:
+Se o projeto utilizar uma API externa, crie um arquivo `.env.local` na raiz do projeto e adicione as variáveis de ambiente necessárias, como:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ini
+NEXT_PUBLIC_API_KEY=SUA_CHAVE_AQUI
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📌 Deploy
 
-## Deploy on Vercel
+O projeto está hospedado em https://lucasmovies.vercel.app/
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Contribuição
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sinta-se à vontade para contribuir com melhorias e novas funcionalidades! Envie um PR ou abra uma issue para discutir novas ideias. 😃
