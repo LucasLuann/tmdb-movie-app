@@ -1,13 +1,19 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { fetchMovies } from "@/lib/tmdb";
+import { fetchMovies, fetchPopularMovies } from "@/lib/tmdb";
 
 export function SearchBar({ setMovies }) {
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if(query === ""){
+      fetchPopularMovies().then((data) => setMovies(data.results));
+    }
+  }, [query])
 
   const handleSearch = (query) => {
     fetchMovies(query).then((data) => setMovies(data.results));

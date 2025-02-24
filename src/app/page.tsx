@@ -1,17 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { MovieCard } from "./components/MovieCard";
-import { fetchPopularMovies } from "@/lib/tmdb";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    fetchPopularMovies().then((data) => setMovies(data.results));
-  }, []);
-
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-12">
