@@ -4,16 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { GetServerSidePropsContext } from "next";
 
-export default async function MovieDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const movie = await getMovieDetails(params.id);
+export default async function MovieDetailPage({ params }: GetServerSidePropsContext) {
+  const movie = await getMovieDetails(params?.id as string); // Confirma que `id` é string
 
   return (
     <div className="relative min-h-screen bg-black text-white">
+      {/* Fundo do filme com blur */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30 blur-lg"
         style={{
@@ -21,7 +19,9 @@ export default async function MovieDetailPage({
         }}
       />
 
+      {/* Conteúdo principal */}
       <div className="relative z-10 container mx-auto p-6 flex flex-col lg:flex-row gap-10">
+        {/* Pôster do filme */}
         <div className="flex-shrink-0 mx-auto lg:mx-0">
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -32,6 +32,7 @@ export default async function MovieDetailPage({
           />
         </div>
 
+        {/* Detalhes do filme */}
         <div className="flex flex-col justify-center space-y-4">
           <h1 className="text-4xl font-bold">{movie.title}</h1>
 
@@ -40,8 +41,7 @@ export default async function MovieDetailPage({
               ⭐ {movie.vote_average.toFixed(1)}
             </Badge>
             <span className="text-gray-400">
-              Lançamento:{" "}
-              {new Date(movie.release_date).toLocaleDateString("pt-BR")}
+              Lançamento: {new Date(movie.release_date).toLocaleDateString("pt-BR")}
             </span>
           </div>
 
@@ -55,11 +55,9 @@ export default async function MovieDetailPage({
             ))}
           </div>
 
+          {/* Botão de voltar */}
           <Link href="/">
-            <Button
-              variant="outline"
-              className="mt-4 flex items-center gap-2 text-black"
-            >
+            <Button variant="outline" className="mt-4 flex items-center gap-2 text-black">
               <ArrowLeft size={20} />
               Voltar para a Home
             </Button>
