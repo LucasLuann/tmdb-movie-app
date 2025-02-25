@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -13,6 +14,7 @@ import {
 } from "./ui/card";
 
 interface MovieCardProps {
+  id: number;
   title: string;
   posterPath: string;
   releaseDate: string;
@@ -20,6 +22,7 @@ interface MovieCardProps {
 }
 
 export function MovieCard({
+  id,
   title,
   posterPath,
   releaseDate,
@@ -27,6 +30,7 @@ export function MovieCard({
 }: MovieCardProps) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
   const dataLancamento = new Date(releaseDate).toLocaleDateString("pt-BR");
+  const router = useRouter();
 
   return (
     <Card className="flex flex-col h-full">
@@ -48,7 +52,7 @@ export function MovieCard({
         />
       </CardContent>
       <CardFooter className="mt-auto"> {/* Isso joga o footer sempre para o final */}
-        <Button className="w-full flex items-center justify-between">
+        <Button onClick={() => router.push(`/filme/${id}`)} className="w-full flex items-center justify-between">
           <span className="flex-1 text-center">Mais Informações</span>
           <CirclePlus />
         </Button>

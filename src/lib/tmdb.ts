@@ -23,3 +23,15 @@ export async function fetchPopularMovies(){
 
   return response.json()
 }
+
+export async function getMovieDetails(id: string) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&language=pt-BR`
+  );
+
+  if (!res.ok) {
+    throw new Error("Filme não encontrado");
+  }
+
+  return res.json();
+}
