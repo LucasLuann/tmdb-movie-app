@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { GetServerSidePropsContext } from "next";
 
-export default async function MovieDetailPage({ params }: GetServerSidePropsContext) {
-  const movie = await getMovieDetails(params?.id as string); // Confirma que `id` é string
+interface MovieDetailPageProps {
+  params: { id: string };
+}
+
+const MovieDetailPage = async ({ params }: MovieDetailPageProps) => {
+  const movie = await getMovieDetails(params.id); // Buscar detalhes do filme
 
   return (
     <div className="relative min-h-screen bg-black text-white">
@@ -48,7 +51,7 @@ export default async function MovieDetailPage({ params }: GetServerSidePropsCont
           <p className="text-lg text-gray-300">{movie.overview}</p>
 
           <div className="flex gap-3 flex-wrap">
-            {movie.genres.map((genre: { id: number; name: string }) => (
+            {movie.genres.map((genre) => (
               <Badge key={genre.id} className="text-md bg-blue-500">
                 {genre.name}
               </Badge>
@@ -66,4 +69,6 @@ export default async function MovieDetailPage({ params }: GetServerSidePropsCont
       </div>
     </div>
   );
-}
+};
+
+export default MovieDetailPage;
