@@ -29,7 +29,7 @@ export function MovieCard({
   const dataLancamento = new Date(releaseDate).toLocaleDateString("pt-BR");
 
   return (
-    <Card>
+    <Card className="flex flex-col h-full">
       <CardHeader>
         <div>
           <Badge className="text-sm px-1 text-center">
@@ -39,18 +39,15 @@ export function MovieCard({
         </div>
         <CardDescription>Data de Lançamento: {dataLancamento}</CardDescription>
       </CardHeader>
-      <CardContent className="text-center">
-        <div className="flex justify-center flex-col space-y-4 items-center">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="rounded-md w-full h-full"
-            // width={300}
-            // height={300}
-          />
-        </div>
+      {/* Garante que essa parte ocupe o máximo de espaço disponível */}
+      <CardContent className="flex-grow flex flex-col items-center">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-[400px] object-cover rounded-md"
+        />
       </CardContent>
-      <CardFooter>
+      <CardFooter className="mt-auto"> {/* Isso joga o footer sempre para o final */}
         <Button className="w-full flex items-center justify-between">
           <span className="flex-1 text-center">Mais Informações</span>
           <CirclePlus />
