@@ -19,7 +19,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-12 w-full">
       <h1 className="text-4xl font-bold mb-8">Buscar Filmes</h1>
       <SearchBar setMovies={setMovies} />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-2 mt-8 w-full">
+      <div className="flex flex-wrap gap-5 mt-8 justify-center items-center">
         {movies?.length > 0 ? (
           movies.map((movie) => (
             <MovieCard

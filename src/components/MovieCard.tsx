@@ -33,28 +33,30 @@ export function MovieCard({
   const router = useRouter();
 
   return (
-    <Card className="flex flex-col h-full">
-      <CardHeader>
+    <Card className="w-80 h-full">
+      <CardHeader className="p-5">
         <div>
-          <Badge className="text-sm px-1 text-center">
-            ⭐ {rating.toFixed(1)}{" "}
-          </Badge>
-          <CardTitle className="truncate text-lg">{title}</CardTitle>
+          <Badge className="text-xs px-2 py-1">⭐ {rating.toFixed(1)}</Badge>
         </div>
-        <CardDescription>Data de Lançamento: {dataLancamento}</CardDescription>
+        <CardTitle className="truncate text-2xl">{title}</CardTitle>
+        <CardDescription className="text-xs">
+          Data de Lançamento: {dataLancamento}
+        </CardDescription>
       </CardHeader>
-      {/* Garante que essa parte ocupe o máximo de espaço disponível */}
-      <CardContent className="flex-grow flex flex-col items-center">
+      <CardContent className="flex justify-center items-center">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-[400px] object-cover rounded-md"
+          className=" h-72 object-cover rounded-md text-center" // Altura fixa menor
         />
       </CardContent>
-      <CardFooter className="mt-auto"> {/* Isso joga o footer sempre para o final */}
-        <Button onClick={() => router.push(`/filme/${id}`)} className="w-full flex items-center justify-between">
-          <span className="flex-1 text-center">Mais Informações</span>
-          <CirclePlus />
+      <CardFooter className="p-3">
+        <Button
+          onClick={() => router.push(`/filme/${id}`)}
+          className="w-full h-9 text-sm flex items-center justify-between"
+        >
+          <span className="flex-1 text-center">Detalhes</span>
+          <CirclePlus size={16} />
         </Button>
       </CardFooter>
     </Card>
