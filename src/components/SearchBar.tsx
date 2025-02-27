@@ -34,12 +34,13 @@ export function SearchBar({ setMovies }: SearchBarProps) {
   return (
     <div className="flex w-full max-w-sm items-center space-x-2">
       <Input
+      className="p-5"
         type="text"
         placeholder="Buscar filmes..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <Button onClick={() => handleSearch(query)}>Buscar</Button>
+      <Button className="bg-gray-600 p-5 hover:bg-gray-700"  onClick={() => handleSearch(query)}>Buscar</Button>
     </div>
   );
 }
